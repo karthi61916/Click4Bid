@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click4Bid</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= TOP HEADER ================= -->
+    <div class="top-header">
+        <div class="left">
+            <i class="fa-solid fa-location-dot"></i>
+            India's Most Trusted E-Auction Platform
+        </div>
+        <div class="right">
+            <span><i class="fa-solid fa-phone"></i> +91 9876543210</span>
+            <span><i class="fa-solid fa-envelope"></i> support@click4bid.com</span>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">
+            <img src="Images\Click4bid logo.png"
+                alt="Logo">
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Property <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="property-listing.html">Property Listing</a></li>
+                    <li><a href="property-details.html">Property Details</a></li>
+                </ul>
+            </li>   
+            <li class="dropdown">
+                <a href="#">Auctions <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="running-auctions.html">Running Auctions</a></li>
+                    <li><a href="upcoming-auctions.html">Upcoming Auctions</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Banks <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="SBI.html">SBI</a></li>
+                    <li><a href="HDFC.html">HDFC</a></li>
+                    <li><a href="ICICI.html">ICICI</a></li>
+                    <li><a href="AXIS.html">AXIS</a></li>
+                </ul>
+            </li>
+            <li><a href="klk-contact.html">Contact Us</a></li>
+        </ul>
+        <div class="buttons">
+            <button class="login"><a href="login.html">Login</a></button>
+            <button class="register"> <a href="register.html">Register</a></button>
+        </div>
+    </nav>
+
+    <!-- ================= LIVE MARQUEE ================= -->
+    <marquee style="background-color:rgb(7, 0, 0);color:rgb(236, 233, 8);font-weight:bold;padding:10px;" behavior="scroll" direction="left" scrollamount="10">
+        *LIVE* Upcoming properties || 3BHK villa - Bangalore || Commercial Complex - Hyderabad |   Industrial Land - Bangalore *LIVE*
+    </marquee>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <h4>India's Most Trusted</h4>
+            <h1><span>Bank Auction</span><br>Platform</h1>
+            <p>Discover verified properties and bid securely online.</p>
+            <a href="#" class="hero-btn">Explore Properties →</a>
+        </div>
+    </section>
+
+    <!-- ================= SEARCH SECTION ================= -->
+    <section class="search-section">
+        <div class="search-box">
+            <div class="search-item">
+                <label>Property Type</label>
+                <select>
+                    <option>All Properties</option>
+                    <option>Residential</option>
+                    <option>Commercial</option>
+                    <option>Industrial</option>
+                    <option>Agricultural</option>
+                </select>
+            </div>
+            <div class="search-item">
+                <label>State</label>
+                <select>
+                    <option>Select State</option>
+                    <option>Karnataka</option>
+                    <option>Maharashtra</option>
+                    <option>Telangana</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+            <div class="search-item">
+                <label>City</label>
+                <select>
+                    <option>Select City</option>
+                    <option>Bangalore</option>
+                    <option>Mysore</option>
+                    <option>Hubli</option>
+                    <option>Belgaum</option>
+                </select>
+            </div>
+            <div class="search-item">
+                <label>Budget</label>
+                <select>
+                    <option>Any Budget</option>
+                    <option>Below ₹10 Lakhs</option>
+                    <option>₹10 - ₹25 Lakhs</option>
+                    <option>₹25 - ₹50 Lakhs</option>
+                    <option>Above ₹50 Lakhs</option>
+                </select>
+            </div>
+            <div class="search-button">
+                <button><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURED PROPERTIES ================= -->
+    <section class="featured">
+        <div class="section-title">
+            <h2>Featured Properties</h2>
+            <p>Explore the latest bank auction properties across India.</p>
+        </div>
+        <div class="property-container">
+
+            <div class="property-card">
+                <img src="Images\property1.png" alt="Property">
+                <div class="property-content">
+                    <span class="tag">Residential</span>
+                    <h3>Luxury Apartment</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Bangalore, Karnataka</p>
+                    <h4>₹52,00,000</h4>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <img src="Images\property2.png" alt="Property">
+                <div class="property-content">
+                    <span class="tag">Commercial</span>
+                    <h3>Office Space</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Hyderabad</p>
+                    <h4>₹1,25,00,000</h4>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <img src="Images\property3.png" alt="Property">
+                <div class="property-content">
+                    <span class="tag">Industrial</span>
+                    <h3>Warehouse</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Chennai</p>
+                    <h4>₹95,00,000</h4>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= RUNNING AUCTIONS ================= -->
+    <section class="running-auctions">
+        <div class="section-title">
+            <h2>Running Auctions</h2>
+            <p>Bid now on live bank auction properties.</p>
+        </div>
+        <div class="auction-container">
+
+            <div class="auction-card">
+                <img src="Images\Running1.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>2 BHK Apartment</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Bangalore</p>
+                    <h4>Reserve Price : ₹45,00,000</h4>
+                    <p>Auction Ends : 12 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+            <div class="auction-card">
+                <img src="Images\Running2.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>Commercial Shop</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Hyderabad</p>
+                    <h4>Reserve Price : ₹80,00,000</h4>
+                    <p>Auction Ends : 15 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+            <div class="auction-card">
+                <img src="Images\Running3.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>Warehouse</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Chennai</p>
+                    <h4>Reserve Price : ₹1,20,00,000</h4>
+                    <p>Auction Ends : 18 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+            <div class="auction-card">
+                <img src="Images\Running4.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>Independent House</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Pune</p>
+                    <h4>Reserve Price : ₹65,00,000</h4>
+                    <p>Auction Ends : 19 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+            <div class="auction-card">
+                <img src="Images\Running5.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>Office Building</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Mumbai</p>
+                    <h4>Reserve Price : ₹2,15,00,000</h4>
+                    <p>Auction Ends : 20 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+            <div class="auction-card">
+                <img src="Images\Running6.png" alt="Auction">
+                <div class="auction-content">
+                    <span class="status">LIVE</span>
+                    <h3>Agricultural Land</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Mysore</p>
+                    <h4>Reserve Price : ₹35,00,000</h4>
+                    <p>Auction Ends : 22 Aug 2026</p>
+                    <a href="#">Bid Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= UPCOMING AUCTIONS ================= -->
+    <section class="upcoming">
+        <div class="section-title">
+            <h2>Upcoming Auctions</h2>
+            <p>Plan your bidding with our upcoming auction schedule.</p>
+        </div>
+        <div class="upcoming-container">
+
+            <div class="upcoming-card">
+                <img src="Images\Upcoming1.png" alt="Property">
+                <div class="upcoming-content">
+                    <span class="date">25 AUG 2026</span>
+                    <h3>3 BHK Villa</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Bengaluru, Karnataka</p>
+                    <p><strong>Reserve Price:</strong> ₹82,00,000</p>
+                    <p><strong>Bank:</strong> SBI</p>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+            <div class="upcoming-card">
+                <img src="Images\Upcoming2.png" alt="Property">
+                <div class="upcoming-content">
+                    <span class="date">28 AUG 2026</span>
+                    <h3>Commercial Complex</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Hyderabad</p>
+                    <p><strong>Reserve Price:</strong> ₹1,60,00,000</p>
+                    <p><strong>Bank:</strong> Canara Bank</p>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+            <div class="upcoming-card">
+                <img src="Images\Upcoming3.png" alt="Property">
+                <div class="upcoming-content">
+                    <span class="date">30 AUG 2026</span>
+                    <h3>Industrial Land</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Chennai</p>
+                    <p><strong>Reserve Price:</strong> ₹2,05,00,000</p>
+                    <p><strong>Bank:</strong> Bank of Baroda</p>
+                    <a href="#">View Details</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="why-us">
+        <div class="section-title">
+            <h2>Why Choose Click4Bid?</h2>
+            <p>India's trusted platform for transparent bank property auctions.</p>
+        </div>
+        <div class="why-container">
+
+            <div class="why-box">
+                <i class="fa-solid fa-building-columns"></i>
+                <h3>Verified Bank Auctions</h3>
+                <p>All properties are verified and listed by authorized banks and financial institutions.</p>
+            </div>
+
+            <div class="why-box">
+                <i class="fa-solid fa-gavel"></i>
+                <h3>Transparent Bidding</h3>
+                <p>Participate in fair and secure online property auctions with complete transparency.</p>
+            </div>
+
+            <div class="why-box">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>100% Secure</h3>
+                <p>Your information and bidding process are protected using advanced security.</p>
+            </div>
+
+            <div class="why-box">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24×7 Support</h3>
+                <p>Dedicated customer support team available to assist you throughout the auction process.</p>
+            </div>
+
+            <div class="why-box">
+                <i class="fa-solid fa-wallet"></i>
+                <h3>Best Property Deals</h3>
+                <p>Buy residential and commercial properties at competitive auction prices.</p>
+            </div>
+
+            <div class="why-box">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Easy Online Process</h3>
+                <p>Search, register, bid and win properties from anywhere in India.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= BANKING PARTNERS ================= -->
+    <section class="banks">
+        <div class="section-title">
+            <h2>Our Banking Partners</h2>
+            <p>Properties from India's leading Banks & Financial Institutions</p>
+        </div>
+        <div class="bank-container">
+
+            <div class="bank-box">
+                <img src="Images\bank1.png" alt="SBI">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank2.png" alt="HDFC">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank3.png" alt="ICICI">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank4.png" alt="Axis Bank">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank5.png" alt="Canara Bank">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank6.png" alt="PNB">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank7.png"
+                    alt="Bank of Baroda">
+            </div>
+
+            <div class="bank-box">
+                <img src="Images\bank8.jpg" alt="Indian Bank">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= STATISTICS SECTION ================= -->
+    <section class="statistics">
+        <div class="stats-container">
+
+            <div class="stat-box">
+                <i class="fa-solid fa-house"></i>
+                <h2>15,000+</h2>
+                <p>Properties Listed</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-building-columns"></i>
+                <h2>100+</h2>
+                <p>Banking Partners</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-users"></i>
+                <h2>25,000+</h2>
+                <p>Happy Customers</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-award"></i>
+                <h2>10+</h2>
+                <p>Years Experience</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SUCCESS STORY ================= -->
+    <section class="success">
+        <div class="success-image">
+            <img src="Images\Sucess-story.png"
+                alt="Success Story">
+        </div>
+
+        <div class="success-content">
+            <span class="sub-title">SUCCESS STORY</span>
+            <h2>Find Your Dream Property Through Click4Bid</h2>
+
+            <p>Click4Bid has helped thousands of buyers purchase residential, commercial and industrial properties
+                directly from leading banks through transparent online auctions.</p>
+
+            <p>Our platform provides verified property details, secure bidding, easy registration and complete
+                transparency during every auction.</p>
+
+            <ul>
+                <li><i class="fa-solid fa-circle-check"></i> Verified Bank Properties</li>
+                <li><i class="fa-solid fa-circle-check"></i> Safe & Secure Bidding</li>
+                <li><i class="fa-solid fa-circle-check"></i> Trusted by Thousands</li>
+                <li><i class="fa-solid fa-circle-check"></i> Fast Registration Process</li>
+            </ul>
+
+            <a href="#" class="know-btn">Know More</a>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>What Our Clients Say</h2>
+            <p>Thousands of customers trust Click4Bid for secure property auctions.</p>
+        </div>
+
+        <div class="testimonial-container">
+
+            <div class="testimonial-card">
+                <img src="Images\client2.png" alt="Client">
+                <h3>Rahul Sharma</h3>
+                <span>Property Buyer</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Click4Bid made purchasing my first home very easy. The auction process was transparent and
+                    hassle-free."</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="Images\client1.png" alt="Client">
+                <h3>Priya Verma</h3>
+                <span>Business Owner</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Excellent service and genuine listings. I successfully purchased my commercial property through
+                    Click4Bid."</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="Images\client3.png" alt="Client">
+                <h3>Anita Patel</h3>
+                <span>Investor</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p>"Highly recommended platform for bank auction properties. Professional support throughout the bidding
+                    process."</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-box">
+                <img src="Images\click4bid_logo_crop.png"
+                    class="footer-logo" alt="Logo">
+                <p>Click4Bid is India's trusted online property auction platform connecting buyers with verified bank
+                    auction properties across the country.</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Property Listing</a></li>
+                    <li><a href="#">Running Auctions</a></li>
+                    <li><a href="#">Upcoming Auctions</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>Property Categories</h3>
+                <ul>
+                    <li><a href="#">Residential</a></li>
+                    <li><a href="#">Commercial</a></li>
+                    <li><a href="#">Industrial</a></li>
+                    <li><a href="#">Agricultural</a></li>
+                    <li><a href="#">Plots</a></li>
+                    <li><a href="#">Apartments</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Bengaluru, Karnataka, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
+                <p><i class="fa-solid fa-envelope"></i> support@click4bid.com</p>
+                <p><i class="fa-solid fa-globe"></i> www.click4bid.com</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Click4Bid. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>
