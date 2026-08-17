@@ -1,0 +1,699 @@
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =================================
+   BODY
+================================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061b42,
+            #0a3978,
+            #08285b
+        );
+}
+
+
+/* =================================
+   BACKGROUND
+================================= */
+
+.background {
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* =================================
+   FLOATING CIRCLES
+================================= */
+
+.circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    animation: floating 8s ease-in-out infinite;
+}
+
+
+/* Orange */
+
+.circle1 {
+    width: 280px;
+    height: 280px;
+
+    top: -100px;
+    left: -100px;
+
+    background:
+        rgba(255, 140, 0, 0.35);
+
+    box-shadow:
+        0 0 80px rgba(255, 140, 0, 0.2);
+}
+
+
+/* Blue */
+
+.circle2 {
+    width: 350px;
+    height: 350px;
+
+    right: -150px;
+    bottom: -150px;
+
+    background:
+        rgba(0, 153, 255, 0.25);
+
+    animation-delay: 2s;
+}
+
+
+/* Orange */
+
+.circle3 {
+    width: 120px;
+    height: 120px;
+
+    top: 15%;
+    right: 18%;
+
+    background:
+        rgba(255, 165, 0, 0.30);
+
+    animation-delay: 3s;
+}
+
+
+/* Blue */
+
+.circle4 {
+    width: 170px;
+    height: 170px;
+
+    bottom: 10%;
+    left: 12%;
+
+    background:
+        rgba(0, 174, 255, 0.22);
+
+    animation-delay: 1s;
+}
+
+
+/* =================================
+   FLOAT ANIMATION
+================================= */
+
+@keyframes floating {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(35px, -40px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
+
+
+/* =================================
+   CARD
+================================= */
+
+.auth-card {
+
+    width: 420px;
+
+    padding: 38px 40px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    animation:
+        cardShow 0.9s ease;
+}
+
+
+.register-card {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+/* =================================
+   CARD ANIMATION
+================================= */
+
+@keyframes cardShow {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(50px)
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =================================
+   LOGO
+================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    animation:
+        logoShow 1s ease;
+}
+
+
+.logo-icon {
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff7900,
+            #ffb000
+        );
+
+    color: white;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(255, 130, 0, 0.35);
+
+    transform: rotate(-5deg);
+
+    transition: 0.3s;
+}
+
+
+.logo-icon:hover {
+
+    transform:
+        rotate(5deg)
+        scale(1.1);
+}
+
+
+.logo-text {
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.logo-text span {
+
+    color: #092f6f;
+}
+
+
+.logo-text b {
+
+    color: #ff8a00;
+
+    font-size: 34px;
+}
+
+
+@keyframes logoShow {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =================================
+   HEADING
+================================= */
+
+.auth-card h2 {
+
+    text-align: center;
+
+    color: #092f6f;
+
+    font-size: 27px;
+
+    margin-bottom: 8px;
+}
+
+
+.subtitle {
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =================================
+   INPUT
+================================= */
+
+.input-box {
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 14px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 11px;
+
+    background: #fafafa;
+
+    transition: 0.3s;
+}
+
+
+.input-box > i {
+
+    width: 25px;
+
+    color: #0b438b;
+
+    transition: 0.3s;
+}
+
+
+.input-box input {
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #333;
+
+    font-size: 14px;
+}
+
+
+.input-box input::placeholder {
+
+    color: #999;
+}
+
+
+/* Input hover */
+
+.input-box:hover {
+
+    border-color: #0b438b;
+
+    transform: translateY(-2px);
+}
+
+
+/* Input focus */
+
+.input-box:focus-within {
+
+    border-color: #ff8a00;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255, 138, 0, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+.input-box:focus-within > i {
+
+    color: #ff8a00;
+
+    transform: scale(1.1);
+}
+
+
+/* =================================
+   OPTIONS
+================================= */
+
+.form-options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 5px 0 20px;
+
+    font-size: 12px;
+}
+
+
+.form-options label {
+
+    color: #666;
+}
+
+
+.form-options input {
+
+    accent-color: #ff8a00;
+}
+
+
+.form-options a {
+
+    color: #0b438b;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.form-options a:hover {
+
+    color: #ff8a00;
+}
+
+
+/* =================================
+   TERMS
+================================= */
+
+.terms {
+
+    font-size: 12px;
+
+    color: #666;
+
+    margin-bottom: 18px;
+
+    line-height: 20px;
+}
+
+
+.terms input {
+
+    accent-color: #ff8a00;
+}
+
+
+.terms a {
+
+    color: #0b438b;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.terms a:hover {
+
+    color: #ff8a00;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.auth-btn {
+
+    width: 100%;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a3675,
+            #0d56a8
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+
+.auth-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff7900,
+            #ffae00
+        );
+
+    transition: 0.4s;
+}
+
+
+.auth-btn:hover::before {
+
+    width: 100%;
+}
+
+
+.auth-btn span,
+.auth-btn i {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.auth-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(10, 54, 117, 0.30);
+}
+
+
+/* =================================
+   SWITCH
+================================= */
+
+.switch-text {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+.switch-text a {
+
+    color: #0b438b;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    margin-left: 4px;
+
+    transition: 0.3s;
+}
+
+
+.switch-text a:hover {
+
+    color: #ff8a00;
+}
+
+
+/* =================================
+   POWERED BY
+================================= */
+
+.powered {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+
+    color: #999;
+
+    font-size: 10px;
+
+    letter-spacing: 0.3px;
+}
+
+
+.powered strong {
+
+    color: #0b438b;
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 500px) {
+
+    .auth-card {
+
+        width: calc(100% - 30px);
+
+        padding: 30px 25px;
+
+        border-radius: 18px;
+    }
+
+    .logo-text {
+        font-size: 25px;
+    }
+
+    .logo-text b {
+        font-size: 29px;
+    }
+
+    .auth-card h2 {
+        font-size: 24px;
+    }
+
+}
