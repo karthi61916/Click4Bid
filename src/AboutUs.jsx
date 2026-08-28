@@ -45,6 +45,34 @@ const testimonials = [
   { name: "Arun Kumar", city: "Chennai", text: "Verified properties and transparent pricing. Best auction platform." },
 ];
 
+/* Nav dropdown config — each item can carry a real router "path".
+   Items without a path (not built yet) still render as "#" placeholders. */
+const NAV_DROPDOWNS = [
+  {
+    label: "Property",
+    items: [
+      { label: "Property Listing", path: "/property-listing" },
+      { label: "Property Details", path: null },
+    ],
+  },
+  {
+    label: "Auctions",
+    items: [
+      { label: "Running Auctions", path: null },
+      { label: "Upcoming Auctions", path: null },
+    ],
+  },
+  {
+    label: "Banks",
+    items: [
+      { label: "SBI", path: null },
+      { label: "HDFC", path: null },
+      { label: "ICICI", path: null },
+      { label: "AXIS", path: null },
+    ],
+  },
+];
+
 function Initials({ name }) {
   return (
     <div className="h-14 w-14 rounded-full bg-slate-900 text-amber-400 font-display font-bold flex items-center justify-center text-base shrink-0">
@@ -93,6 +121,23 @@ function Reveal({ children, delay = 0, className = "" }) {
     >
       {children}
     </div>
+  );
+}
+
+/* Renders a dropdown item as a router Link when it has a real path,
+   otherwise falls back to a "#" placeholder anchor. */
+function DropdownItem({ item, className, onClick }) {
+  if (item.path) {
+    return (
+      <Link to={item.path} className={className} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
+  }
+  return (
+    <a href="#" className={className} onClick={onClick}>
+      {item.label}
+    </a>
   );
 }
 
@@ -152,19 +197,18 @@ export default function AboutUs() {
           <ul className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
             <li><Link to="/" className="hover:text-amber-500 transition-colors">Home</Link></li>
             <li><Link to="/about" className="text-amber-500">About Us</Link></li>
-            {[
-              { label: "Property", items: ["Property Listing", "Property Details"] },
-              { label: "Auctions", items: ["Running Auctions", "Upcoming Auctions"] },
-              { label: "Banks", items: ["SBI", "HDFC", "ICICI", "AXIS"] },
-            ].map((d) => (
+            {NAV_DROPDOWNS.map((d) => (
               <li key={d.label} className="relative group">
                 <button className="flex items-center gap-1 hover:text-amber-500 transition-colors">
                   {d.label} <ChevronDown size={14} />
                 </button>
                 <ul className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                   {d.items.map((it) => (
-                    <li key={it}>
-                      <a href="#" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-amber-500">{it}</a>
+                    <li key={it.label}>
+                      <DropdownItem
+                        item={it}
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-amber-500"
+                      />
                     </li>
                   ))}
                 </ul>
@@ -174,8 +218,8 @@ export default function AboutUs() {
           </ul>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-amber-500 transition-colors">Login</button>
-            <button className="px-5 py-2 text-sm font-semibold rounded-md bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:scale-95">Register</button>
+            <Link to="/login" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-amber-500 transition-colors">Login</Link>
+            <Link to="/register" className="px-5 py-2 text-sm font-semibold rounded-md bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:scale-95">Register</Link>
           </div>
 
           <button className="lg:hidden text-slate-800" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
@@ -188,11 +232,7 @@ export default function AboutUs() {
             <Link to="/" className="block py-2" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link to="/about" className="block py-2" onClick={() => setMenuOpen(false)}>About Us</Link>
             <a href="#" className="block py-2">Contact Us</a>
-            {[
-              { label: "Property", items: ["Property Listing", "Property Details"] },
-              { label: "Auctions", items: ["Running Auctions", "Upcoming Auctions"] },
-              { label: "Banks", items: ["SBI", "HDFC", "ICICI", "AXIS"] },
-            ].map((d) => (
+            {NAV_DROPDOWNS.map((d) => (
               <div key={d.label}>
                 <button
                   className="flex w-full items-center justify-between py-2"
@@ -203,14 +243,21 @@ export default function AboutUs() {
                 </button>
                 {openDropdown === d.label && (
                   <div className="pl-4 pb-2 space-y-1 text-slate-500">
-                    {d.items.map((it) => <a key={it} href="#" className="block py-1">{it}</a>)}
+                    {d.items.map((it) => (
+                      <DropdownItem
+                        key={it.label}
+                        item={it}
+                        className="block py-1"
+                        onClick={() => setMenuOpen(false)}
+                      />
+                    ))}
                   </div>
                 )}
               </div>
             ))}
             <div className="flex gap-3 pt-3">
-              <button className="flex-1 px-4 py-2 rounded-md border border-slate-200 font-semibold">Login</button>
-              <button className="flex-1 px-4 py-2 rounded-md bg-amber-500 text-slate-900 font-semibold">Register</button>
+              <Link to="/login" className="flex-1 text-center px-4 py-2 rounded-md border border-slate-200 font-semibold" onClick={() => setMenuOpen(false)}>Login</Link>
+              <Link to="/register" className="flex-1 text-center px-4 py-2 rounded-md bg-amber-500 text-slate-900 font-semibold" onClick={() => setMenuOpen(false)}>Register</Link>
             </div>
           </div>
         )}
@@ -366,10 +413,10 @@ export default function AboutUs() {
       <footer className="bg-slate-950 text-slate-400 pt-16 pb-6 px-6">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <a href="#" className="flex items-center gap-2 font-display font-bold text-lg text-white mb-4">
+            <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg text-white mb-4">
               <span className="grid place-items-center h-8 w-8 rounded bg-amber-500 text-slate-900 font-mono-data text-xs">C4</span>
               Click4Bid
-            </a>
+            </Link>
             <p className="text-sm leading-relaxed">
               Click4Bid is India's trusted online property auction platform offering transparent, secure and hassle-free bidding experiences for buyers, banks and financial institutions.
             </p>
@@ -378,9 +425,11 @@ export default function AboutUs() {
           <div>
             <h3 className="font-display font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              {["Home", "About Us", "Properties", "Running Auctions", "Contact Us"].map((l) => (
-                <li key={l}><a href="#" className="hover:text-amber-400 transition-colors">{l}</a></li>
-              ))}
+              <li><Link to="/" className="hover:text-amber-400 transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-amber-400 transition-colors">About Us</Link></li>
+              <li><Link to="/property-listing" className="hover:text-amber-400 transition-colors">Properties</Link></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Running Auctions</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
