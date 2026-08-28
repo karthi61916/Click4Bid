@@ -191,7 +191,7 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5">
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl text-slate-900">
             <span className="grid place-items-center h-9 w-9 rounded bg-slate-900 text-amber-400 font-mono-data text-sm">C4</span>
-            Click<span className="text-amber-500">4</span>Bid
+            Click4Bid
           </Link>
 
           <ul className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
