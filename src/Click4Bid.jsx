@@ -71,6 +71,34 @@ const testimonials = [
   { name: "Anita Patel", role: "Investor", stars: 4.5, text: "Highly recommended platform for bank auction properties. Professional support throughout the bidding process." },
 ];
 
+/* Nav dropdown config — each item can carry a real router "path".
+   Items without a path (not built yet) still render as "#" placeholders. */
+const NAV_DROPDOWNS = [
+  {
+    label: "Property",
+    items: [
+      { label: "Property Listing", path: "/property-listing" },
+      { label: "Property Details", path: null },
+    ],
+  },
+  {
+    label: "Auctions",
+    items: [
+      { label: "Running Auctions", path: null },
+      { label: "Upcoming Auctions", path: null },
+    ],
+  },
+  {
+    label: "Banks",
+    items: [
+      { label: "SBI", path: null },
+      { label: "HDFC", path: null },
+      { label: "ICICI", path: null },
+      { label: "AXIS", path: null },
+    ],
+  },
+];
+
 function Stars({ count }) {
   const full = Math.floor(count);
   const half = count % 1 !== 0;
@@ -129,6 +157,23 @@ function Reveal({ children, delay = 0, className = "" }) {
     >
       {children}
     </div>
+  );
+}
+
+/* Renders a dropdown item as a router Link when it has a real path,
+   otherwise falls back to a "#" placeholder anchor. */
+function DropdownItem({ item, className, onClick }) {
+  if (item.path) {
+    return (
+      <Link to={item.path} className={className} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
+  }
+  return (
+    <a href="#" className={className} onClick={onClick}>
+      {item.label}
+    </a>
   );
 }
 
@@ -199,25 +244,24 @@ export default function Click4Bid() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5">
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl text-slate-900">
             <span className="grid place-items-center h-9 w-9 rounded bg-slate-900 text-amber-400 font-mono-data text-sm">C4</span>
-            Click<span className="text-amber-500">4</span>Bid
+            Click4Bid
           </Link>
 
           <ul className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
             <li><Link to="/" className="text-amber-500">Home</Link></li>
             <li><Link to="/about" className="hover:text-amber-500 transition-colors">About Us</Link></li>
-            {[
-              { label: "Property", items: ["Property Listing", "Property Details"] },
-              { label: "Auctions", items: ["Running Auctions", "Upcoming Auctions"] },
-              { label: "Banks", items: ["SBI", "HDFC", "ICICI", "AXIS"] },
-            ].map((d) => (
+            {NAV_DROPDOWNS.map((d) => (
               <li key={d.label} className="relative group">
                 <button className="flex items-center gap-1 hover:text-amber-500 transition-colors">
                   {d.label} <ChevronDown size={14} />
                 </button>
                 <ul className="absolute left-0 top-full mt-2 w-48 rounded-lg bg-white shadow-lg border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                   {d.items.map((it) => (
-                    <li key={it}>
-                      <a href="#" className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-amber-500">{it}</a>
+                    <li key={it.label}>
+                      <DropdownItem
+                        item={it}
+                        className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-amber-500"
+                      />
                     </li>
                   ))}
                 </ul>
@@ -227,8 +271,8 @@ export default function Click4Bid() {
           </ul>
 
           <div className="hidden lg:flex items-center gap-3">
-            <button className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-amber-500 transition-colors">Login</button>
-            <button className="px-5 py-2 text-sm font-semibold rounded-md bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:scale-95">Register</button>
+            <Link to="/login" className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-amber-500 transition-colors">Login</Link>
+            <Link to="/register" className="px-5 py-2 text-sm font-semibold rounded-md bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:scale-95">Register</Link>
           </div>
 
           <button className="lg:hidden text-slate-800" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">
@@ -241,11 +285,7 @@ export default function Click4Bid() {
             <Link to="/" className="block py-2" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link to="/about" className="block py-2" onClick={() => setMenuOpen(false)}>About Us</Link>
             <a href="#" className="block py-2">Contact Us</a>
-            {[
-              { label: "Property", items: ["Property Listing", "Property Details"] },
-              { label: "Auctions", items: ["Running Auctions", "Upcoming Auctions"] },
-              { label: "Banks", items: ["SBI", "HDFC", "ICICI", "AXIS"] },
-            ].map((d) => (
+            {NAV_DROPDOWNS.map((d) => (
               <div key={d.label}>
                 <button
                   className="flex w-full items-center justify-between py-2"
@@ -256,14 +296,33 @@ export default function Click4Bid() {
                 </button>
                 {openDropdown === d.label && (
                   <div className="pl-4 pb-2 space-y-1 text-slate-500">
-                    {d.items.map((it) => <a key={it} href="#" className="block py-1">{it}</a>)}
+                    {d.items.map((it) => (
+                      <DropdownItem
+                        key={it.label}
+                        item={it}
+                        className="block py-1"
+                        onClick={() => setMenuOpen(false)}
+                      />
+                    ))}
                   </div>
                 )}
               </div>
             ))}
             <div className="flex gap-3 pt-3">
-              <button className="flex-1 px-4 py-2 rounded-md border border-slate-200 font-semibold">Login</button>
-              <button className="flex-1 px-4 py-2 rounded-md bg-amber-500 text-slate-900 font-semibold">Register</button>
+              <Link
+                to="/login"
+                className="flex-1 text-center px-4 py-2 rounded-md border border-slate-200 font-semibold"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="flex-1 text-center px-4 py-2 rounded-md bg-amber-500 text-slate-900 font-semibold"
+                onClick={() => setMenuOpen(false)}
+              >
+                Register
+              </Link>
             </div>
           </div>
         )}
@@ -297,9 +356,9 @@ export default function Click4Bid() {
             <p className="text-slate-300 mt-5 text-lg max-w-md">
               Discover verified properties and bid securely online.
             </p>
-            <a href="#" className="group inline-flex items-center gap-2 mt-8 px-6 py-3.5 rounded-md bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
+            <Link to="/property-listing" className="group inline-flex items-center gap-2 mt-8 px-6 py-3.5 rounded-md bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all duration-300">
               Explore Properties <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </Link>
           </div>
           <div className="hidden lg:grid grid-cols-2 gap-4">
             {[
@@ -339,9 +398,9 @@ export default function Click4Bid() {
             </div>
           ))}
           <div className="flex items-end">
-            <button className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white rounded-md py-2.5 text-sm font-semibold transition-all duration-300 hover:shadow-lg active:scale-95">
+            <Link to="/property-listing" className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white rounded-md py-2.5 text-sm font-semibold transition-all duration-300 hover:shadow-lg active:scale-95">
               <Search size={16} /> Search
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -362,9 +421,9 @@ export default function Click4Bid() {
                   <h3 className="font-display font-semibold text-lg text-slate-900 mt-3">{p.title}</h3>
                   <p className="text-slate-500 text-sm flex items-center gap-1.5 mt-1"><MapPin size={14} /> {p.location}</p>
                   <p className="font-mono-data font-semibold text-slate-900 mt-3">₹{p.price}</p>
-                  <a href="#" className="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm mt-3 hover:gap-2 transition-all">
+                  <Link to="/property-listing" className="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm mt-3 hover:gap-2 transition-all">
                     View Details <ArrowRight size={14} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </Reveal>
@@ -395,9 +454,9 @@ export default function Click4Bid() {
                     <p className="text-xs text-slate-400 mt-3">Reserve Price</p>
                     <p className="font-mono-data font-bold text-slate-900 text-lg">₹{a.reserve}</p>
                     <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-2"><Clock size={13} /> Ends {a.ends}</p>
-                    <a href="#" className="block text-center mt-4 bg-slate-900 hover:bg-amber-500 hover:text-slate-900 text-white font-semibold text-sm py-2.5 rounded-md transition-all duration-300 hover:shadow-lg">
+                    <Link to="/property-listing" className="block text-center mt-4 bg-slate-900 hover:bg-amber-500 hover:text-slate-900 text-white font-semibold text-sm py-2.5 rounded-md transition-all duration-300 hover:shadow-lg">
                       Bid Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </Reveal>
@@ -423,9 +482,9 @@ export default function Click4Bid() {
                   <p className="text-slate-600"><span className="font-semibold text-slate-900">Reserve Price:</span> <span className="font-mono-data">₹{u.reserve}</span></p>
                   <p className="text-slate-600"><span className="font-semibold text-slate-900">Bank:</span> {u.bank}</p>
                 </div>
-                <a href="#" className="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm mt-4 hover:gap-2 transition-all">
+                <Link to="/property-listing" className="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm mt-4 hover:gap-2 transition-all">
                   View Details <ArrowRight size={14} />
-                </a>
+                </Link>
               </div>
             </Reveal>
           ))}
@@ -550,10 +609,10 @@ export default function Click4Bid() {
       <footer className="bg-slate-950 text-slate-400 pt-16 pb-6 px-6">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <a href="#" className="flex items-center gap-2 font-display font-bold text-lg text-white mb-4">
+            <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg text-white mb-4">
               <span className="grid place-items-center h-8 w-8 rounded bg-amber-500 text-slate-900 font-mono-data text-xs">C4</span>
               Click4Bid
-            </a>
+            </Link>
             <p className="text-sm leading-relaxed">
               Click4Bid is India's trusted online property auction platform connecting buyers with verified bank auction properties across the country.
             </p>
@@ -569,9 +628,12 @@ export default function Click4Bid() {
           <div>
             <h3 className="font-display font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              {["Home", "About Us", "Property Listing", "Running Auctions", "Upcoming Auctions", "Contact Us"].map((l) => (
-                <li key={l}><a href="#" className="hover:text-amber-400 transition-colors">{l}</a></li>
-              ))}
+              <li><Link to="/" className="hover:text-amber-400 transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-amber-400 transition-colors">About Us</Link></li>
+              <li><Link to="/property-listing" className="hover:text-amber-400 transition-colors">Property Listing</Link></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Running Auctions</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Upcoming Auctions</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
