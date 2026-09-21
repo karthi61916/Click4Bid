@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #B8905A;
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: #B8905A;
+    color: #FAF9F6;
+  }
+}
+
+@layer components {
+  .lot-number {
+    @apply font-mono text-xs text-brass-dark tracking-wide;
+  }
+  .rule {
+    @apply border-t border-ink/10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-medium tracking-wide hover:bg-ink-light transition-colors;
+  }
+  .btn-brass {
+    @apply inline-flex items-center justify-center gap-2 bg-brass text-ink px-6 py-3 text-sm font-medium tracking-wide hover:bg-brass-dark hover:text-paper transition-colors;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-ink/20 text-ink px-6 py-3 text-sm font-medium tracking-wide hover:border-ink transition-colors;
+  }
+  .field-label {
+    @apply block text-xs font-medium text-ink-soft mb-1.5;
+  }
+  .field-input {
+    @apply w-full border border-ink/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-soft/50 focus:border-brass outline-none transition-colors;
+  }
+}
